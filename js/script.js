@@ -23,6 +23,8 @@ document.getElementById('demo').onclick = function changeContent() {
 const buttonItem = document.querySelectorAll('.btn');
 const contentArticles = document.querySelectorAll('.article');
 
+var buttonId = 'btn-1'; // Default
+
 // select article 
 function selectArticle(e) {
 	// remove show from each article
@@ -33,18 +35,19 @@ function selectArticle(e) {
 
 	// check which button is being clicked
 	// console.log(this.id);
+	buttonId = this.id;
 
 	// grab article id from the DOM using btn id
 	var articleItem;
-	if(this.id === 'btn-1') {
+	if(buttonId === 'btn-1') {
 		articleItem = document.getElementById('article-1');
-	} else if (this.id === 'btn-2') {
+	} else if (buttonId === 'btn-2') {
 		articleItem = document.getElementById('article-2');
 	} else {
 		articleItem = document.getElementById('article-3');
 	}
 
-	// console.log(articleItem);
+	console.log(articleItem);
 
 	// add show class to the chosen article 
 	articleItem.classList.add('show');
@@ -53,7 +56,6 @@ function selectArticle(e) {
 	const selectedButton = document.getElementById(this.id);
 	// console.log(selectedButton);
 	selectedButton.classList.add('btn-selected');
-
 }
 
 // remove background color from each button
@@ -65,6 +67,19 @@ function removeButtonColor() {
 function removeShow() {
 	contentArticles.forEach(item => item.classList.remove('show'));
 }
+
+
+// check parent Id of read more button
+function displayMore(elem) {
+	// Get readmore article parent id
+    const parentId = elem.parentNode.id;
+    console.log(parentId);
+
+    // remove read-more button
+    elem.classList.add('hide');
+
+    // show complete article
+ }
 
 // listen for button click
 buttonItem.forEach(item => item.addEventListener('click', selectArticle));
