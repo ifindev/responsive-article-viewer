@@ -22,11 +22,12 @@ document.getElementById('demo').onclick = function changeContent() {
 // Variables for manipulating DOM
 const buttonItem = document.querySelectorAll('.btn');
 const contentArticles = document.querySelectorAll('.article');
+var moreArticle;
 
 var buttonId = 'btn-1'; // Default
 
 // select article 
-function selectArticle(e) {
+function selectArticle(elem) {
 	// remove show from each article
 	removeShow();
 
@@ -51,6 +52,18 @@ function selectArticle(e) {
 
 	// add show class to the chosen article 
 	articleItem.classList.add('show');
+
+	
+	// Show read more button
+	const readMore = articleItem.getElementsByClassName('read-more');
+	readMore.item(0).classList.remove('hide');
+	/* console.log(readMore);	--> HTML collection array
+	  console.log(readMore.item(0)); */
+
+	// hide the more-article-content
+	moreArticle = articleItem.getElementsByClassName('more-article-content');
+	moreArticle.item(0).classList.add('hide');
+
 
 	// add background color to the selected button
 	const selectedButton = document.getElementById(this.id);
@@ -79,12 +92,8 @@ function displayMore(elem) {
     elem.classList.add('hide');
 
     // show complete article
-		elem
-			.parentNode
-			.getElementsByClassName('more-article-content')
-			.item(0)
-			.classList
-			.remove('hide')
+    moreArticle = elem.parentNode.getElementsByClassName('more-article-content');
+    moreArticle.item(0).classList.remove('hide');
  }
 
 // listen for button click
