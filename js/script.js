@@ -92,8 +92,12 @@ function displayMore(elem) {
     elem.classList.add('hide');
 
     // show complete article
-    moreArticle = elem.parentNode.getElementsByClassName('more-article-content');
-    moreArticle.item(0).classList.remove('hide');
+    elem
+			.parentNode
+			.getElementsByClassName('more-article-content')
+			.item(0)
+			.classList
+			.remove('hide')
  }
 
 // listen for button click
