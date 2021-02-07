@@ -92,12 +92,8 @@ function displayMore(elem) {
     elem.classList.add('hide');
 
     // show complete article
-    elem
-			.parentNode
-			.getElementsByClassName('more-article-content')
-			.item(0)
-			.classList
-			.remove('hide')
+    moreArticle = elem.parentNode.getElementsByClassName('more-article-content');
+    moreArticle.item(0).classList.remove('hide');
  }
 
 // listen for button click
